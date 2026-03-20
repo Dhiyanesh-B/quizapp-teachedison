@@ -16,6 +16,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key-change-in-p
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+env_host = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if env_host:
+    ALLOWED_HOSTS.append(env_host)
 
 # ---------------------------------------------------------------------------
 # Application definition
